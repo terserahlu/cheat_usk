@@ -27,7 +27,7 @@ Langkah-Langkah clone project bila lupa, tehee :
 
 - git clone hhttps://github.com/terserahlu/cheat_usk.git
 - cd cheat_usk
-- rm rm -rf .git
+- rm -rf .git
 - composer install
 - cp .env.example .env
 - php artisan key:generate
