@@ -47,6 +47,78 @@ Jawaban soal usk, stttss.. jangan kasih tau siapa siapa tehe:
 - 8. C. menutupi inputan (masked)
 - 9. B. password
 - 10. E. javac ujian.java
+ 
+Soal Essai:
+#ARRAY
+1. Pengertian
+
+Array adalah struktur data yang menyimpan banyak data dalam satu variabel, dan setiap data punya indeks.
+
+2. Ciri-ciri Array
+
+Ukuran tetap (misal ditentukan saat deklarasi).
+
+Data disimpan berurutan dalam memori.
+
+Akses cepat menggunakan indeks → array[2].
+
+3. Kelebihan Array
+
+Akses elemen sangat cepat.
+
+Cocok untuk data yang tidak sering berubah.
+
+Memori lebih efisien karena tanpa pointer.
+
+4. Kekurangan Array
+
+Tidak bisa menambah elemen jika ukuran sudah penuh.
+
+Insert atau delete di tengah array lambat karena harus menggeser elemen lain.
+
+#LINKED LIST
+1. Pengertian
+
+Linked List adalah struktur data dinamis yang terdiri dari node.
+Setiap node berisi:
+
+data
+
+pointer ke node berikutnya (next)
+
+2. Ciri-ciri Linked List
+
+Ukuran boleh bertambah/berkurang secara dinamis.
+
+Elemen tidak berurutan dalam memori, tapi saling terhubung pointer.
+
+Untuk mengakses elemen ke-5, harus traverse dari awal.
+
+3. Kelebihan Linked List
+
+Mudah menambah/menghapus elemen kapan saja.
+
+Ukuran fleksibel (dinamis).
+
+Tidak membuang memori untuk ruang kosong (seperti array fixed size).
+
+4. Kekurangan Linked List
+
+Akses elemen lebih lambat (harus satu per satu).
+
+Membutuhkan memori lebih besar karena ada pointer.
+
+Tidak bisa diakses dengan indeks langsung.
+
+| Perbandingan  | Array                   | Linked List                       |
+| ------------- | ----------------------- | --------------------------------- |
+| Penyimpanan   | Rapi dan berurutan      | Berantakan tapi terhubung pointer |
+| Ukuran        | Tetap                   | Fleksibel                         |
+| Akses data    | Cepat (langsung indeks) | Lambat (harus satu-satu)          |
+| Insert/delete | Lambat di tengah        | Cepat                             |
+| Memori        | Lebih hemat             | Lebih boros                       |
+| Cocok untuk   | Data stabil             | Data sering berubah               |
+
 
 ## Learning Laravel
 
