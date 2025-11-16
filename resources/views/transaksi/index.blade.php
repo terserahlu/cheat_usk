@@ -41,7 +41,7 @@
             </div>
             <div style="text-align: right;">
                 <div style="font-size: 1.1rem; font-weight: 600; color: #A2AF9B;">
-                    Total: Rp {{ number_format($group['total_semua'], 0, ',', '.') }}
+                    Kasir: {{ $group['kasir']->nama ?? $group['kasir']->username ?? 'N/A'}}
                 </div>
             </div>
         </div>
@@ -77,7 +77,6 @@
                         <td style="padding: 12px; text-align: center; color: #2c3e50;">
                             <div style="margin-bottom: 4px;">Bayar: Rp {{ number_format($group['bayar_semua'], 0, ',', '.') }}</div>
                             <div style="margin-bottom: 4px; color: #065F46;">Kembalian: Rp {{ number_format($group['kembalian_semua'], 0, ',', '.') }}</div>
-                            <div style="font-size: 0.95rem; color: #2c3e50;">Kasir: {{ $group['kasir']->name ?? $group['kasir']->username ?? 'N/A' }}</div>
                         </td>
                     </tr>
                 </tfoot>
