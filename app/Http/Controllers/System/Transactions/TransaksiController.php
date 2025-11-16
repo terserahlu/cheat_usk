@@ -96,7 +96,6 @@ class TransaksiController extends Controller
                 $orderansArray = [];
                 $totalSebelumnya = 0;
 
-                // Siapkan data orderan terlebih dahulu
                 foreach ($request->orderans as $idOrderan) {
                     $orderanItem = Orderan::with('menu')->findOrFail($idOrderan);
                     $hargaMenu = $orderanItem->menu->harga;
@@ -109,16 +108,13 @@ class TransaksiController extends Controller
                     ];
                 }
 
-                // Buat transaksi
                 $totalOrderans = count($orderansArray);
                 foreach ($orderansArray as $index => $orderanData) {
                     $isLast = ($index === $totalOrderans - 1);
                     
                     if ($isLast) {
-                        // Untuk item terakhir, masukkan semua sisa
                         $bayarTransaksi = $bayar - $totalSebelumnya;
                     } else {
-                        // Untuk item pertama sampai sebelum terakhir, masukkan harga sesuai list
                         $bayarTransaksi = $orderanData['subtotal'];
                         $totalSebelumnya += $orderanData['subtotal'];
                     }
@@ -132,11 +128,9 @@ class TransaksiController extends Controller
                 }
 
                 if ($idMeja) {
-                    // Update status meja menggunakan stored procedure
                     if (DB::getDriverName() === 'mysql') {
                         DB::statement('CALL update_meja_status_tersedia(?)', [$idMeja]);
                     } else {
-                        // Fallback untuk database lain (SQLite, dll)
                         Meja::where('id', $idMeja)->update([
                             'status' => Meja::STATUS_TERSEDIA
                         ]);
@@ -180,11 +174,9 @@ class TransaksiController extends Controller
                 'bayar'     => $bayar,
             ]);
 
-            // Update status meja menggunakan stored procedure
             if (DB::getDriverName() === 'mysql') {
                 DB::statement('CALL update_meja_status_tersedia(?)', [$orderan->idmeja]);
             } else {
-                // Fallback untuk database lain (SQLite, dll)
                 Meja::where('id', $orderan->idmeja)->update([
                     'status' => Meja::STATUS_TERSEDIA
                 ]);

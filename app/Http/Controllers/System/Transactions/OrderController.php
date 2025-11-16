@@ -51,16 +51,12 @@ class OrderController extends Controller
 
     public function order(Request $request)
     {
-        // Jika multiple orders
         if ($request->has('orders') && is_array($request->orders)) {
             $validator = Validator::make($request->all(), [
-                // Pelanggan
                 'namapelanggan' => 'required|string|min:3',
                 'jeniskelamin'  => 'required|boolean',
                 'nohp'          => 'nullable|digits_between:10,15',
                 'alamat'        => 'nullable|string',
-
-                // Orders
                 'id_meja'       => 'required|exists:mejas,id',
                 'orders'        => 'required|array|min:1',
                 'orders.*.id_menu'  => 'required|exists:menus,id',
@@ -83,20 +79,17 @@ class OrderController extends Controller
 
                 foreach ($request->orders as $item) {
                     Orderan::create([
-                        // Use correct field names for Orderan model
-                        'idmenu'      => $item['id_menu'], // field in DB: idmenu
-                        'idmeja'      => $request->id_meja, // field in DB: idmeja
-                        'idpelaggan'  => $idPelanggan, // field in DB: idpelaggan (typo as in DB, adjust if schema corrected)
+                        'idmenu'      => $item['id_menu'],
+                        'idmeja'      => $request->id_meja,
+                        'idpelaggan'  => $idPelanggan,
                         'jumlah'      => $item['jumlah'] ?? 1,
-                        'idwaiter'    => Auth::user()->id, // field in DB: idwaiter
+                        'idwaiter'    => Auth::user()->id,
                     ]);
                 }
 
-                // Update status meja menggunakan stored procedure
                 if (DB::getDriverName() === 'mysql') {
                     DB::statement('CALL update_meja_status_terisi(?)', [$request->id_meja]);
                 } else {
-                    // Fallback untuk database lain (SQLite, dll)
                     Meja::where('id', $request->id_meja)->update([
                         'status' => Meja::STATUS_DIISI
                     ]);
@@ -107,13 +100,10 @@ class OrderController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            // Pelanggan
             'namapelanggan' => 'required|string|min:3',
             'jeniskelamin'  => 'required|boolean',
             'nohp'          => 'nullable|digits_between:10,15',
             'alamat'        => 'nullable|string',
-
-            // Single Order
             'id_meja'       => 'required|exists:mejas,id',
             'id_menu'       => 'required|exists:menus,id',
             'jumlah'        => 'nullable|integer|min:1',
@@ -135,12 +125,11 @@ class OrderController extends Controller
             $idPelanggan = $pelanggan->id;
 
             Orderan::create([
-                // Use correct field names for Orderan model
-                'idmenu'      => $request->id_menu, // field in DB: idmenu
-                'idmeja'      => $request->id_meja, // field in DB: idmeja
-                'idpelaggan'  => $idPelanggan, // field in DB: idpelaggan (typo as in DB, adjust if schema corrected)
+                'idmenu'      => $request->id_menu,
+                'idmeja'      => $request->id_meja,
+                'idpelaggan'  => $idPelanggan,
                 'jumlah'      => $request->jumlah ?? 1,
-                'idwaiter'    => Auth::user()->id, // field in DB: idwaiter
+                'idwaiter'    => Auth::user()->id,
             ]);
 
             Meja::where('id', $request->id_meja)->update([

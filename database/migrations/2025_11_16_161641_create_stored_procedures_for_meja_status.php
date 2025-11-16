@@ -10,13 +10,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Hanya untuk MySQL/MariaDB
         if (DB::getDriverName() === 'mysql') {
-            // Drop stored procedure jika sudah ada
             DB::unprepared('DROP PROCEDURE IF EXISTS update_meja_status_terisi');
             DB::unprepared('DROP PROCEDURE IF EXISTS update_meja_status_tersedia');
             
-            // Stored procedure untuk mengubah status meja menjadi terisi
             DB::unprepared('
                 CREATE PROCEDURE update_meja_status_terisi(IN p_id_meja INT)
                 BEGIN
@@ -26,7 +23,6 @@ return new class extends Migration
                 END
             ');
 
-            // Stored procedure untuk mengubah status meja menjadi tersedia
             DB::unprepared('
                 CREATE PROCEDURE update_meja_status_tersedia(IN p_id_meja INT)
                 BEGIN
@@ -43,7 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Hanya untuk MySQL/MariaDB
         if (DB::getDriverName() === 'mysql') {
             DB::unprepared('DROP PROCEDURE IF EXISTS update_meja_status_terisi');
             DB::unprepared('DROP PROCEDURE IF EXISTS update_meja_status_tersedia');

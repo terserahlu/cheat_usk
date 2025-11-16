@@ -2,14 +2,12 @@
 @section('title', 'Detail Laporan')
 @section('content')
 <div class="page-header">
-    <h2>Detail Laporan Transaksi</h2>
-    <div class="breadcrumb">
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-        <span>/</span>
-        <a href="{{ route('laporan.index') }}">Laporan</a>
-        <span>/</span>
-        <span>Detail</span>
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+        <a href="{{ route('laporan.index') }}" style="background: #E0E0E0; color: #2c3e50; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#D4DED0';" onmouseout="this.style.background='#E0E0E0';">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </a>
     </div>
+    <h2>Detail Laporan Transaksi</h2>
 </div>
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">

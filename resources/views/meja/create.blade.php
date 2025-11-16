@@ -2,14 +2,12 @@
 @section('title', 'Tambah Meja')
 @section('content')
 <div class="page-header">
-    <h2>Tambah Meja</h2>
-    <div class="breadcrumb">
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-        <span>/</span>
-        <a href="{{ route('meja.index') }}">Meja</a>
-        <span>/</span>
-        <span>Tambah</span>
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+        <a href="{{ route('meja.index') }}" style="background: #E0E0E0; color: #2c3e50; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#D4DED0';" onmouseout="this.style.background='#E0E0E0';">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </a>
     </div>
+    <h2>Tambah Meja</h2>
 </div>
 
 @if($errors->any())

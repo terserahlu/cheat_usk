@@ -15,15 +15,16 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,... $role): Response
+    public function handle(Request $request, Closure $next,... $roles): Response
     {
         if(!(Auth::check())){
-            return redirect()->back()->with('failed','Anda Tidak Memiliki Akses');
+            return redirect()->route('login')->with('failed','Anda Tidak Memiliki Akses, Silahkan Login Terlebih Dahulu');
         }
-        $userRole = Auth::user()->role;
-        if(!(in_array($userRole,$role))){
-            return redirect()->back()->with('failed','Akses Anda Ditolak, Kunci Akses Tidak sesuai');
+        
+        if(!(in_array(Auth::user()->role, $roles))){
+            return redirect()->route('dashboard')->with('failed','Akses Anda Ditolak, Kunci Akses Tidak sesuai');
         }
+
         return $next($request);
     }
 }

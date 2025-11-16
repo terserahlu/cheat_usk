@@ -299,24 +299,6 @@
             color: #7f8c8d;
             font-size: 0.95rem;
         }
-
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-
-        .breadcrumb a {
-            color: #A2AF9B;
-            text-decoration: none;
-        }
-
-        .breadcrumb span {
-            color: #7f8c8d;
-        }
-
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -430,27 +412,39 @@
                 </a>
             </div>
             <div class="menu-section">
+                @if(Auth::check())
                 <div class="menu-section-title">System</div>
+                @if(Auth::user()->role == 'admin')
                 <a href="{{ route('meja.index') }}" class="menu-item {{ request()->routeIs('meja.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-table"></i>
                     <span>Meja</span>
                 </a>
+                @endif
+                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'waiter')
                 <a href="{{ route('menu.index') }}" class="menu-item {{ request()->routeIs('menu.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-utensils"></i>
                     <span>Menu</span>
                 </a>
+                @endif
+                @if(Auth::user()->role == 'waiter')
                 <a href="{{ route('orderan.index') }}" class="menu-item {{ request()->routeIs('orderan.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <span>Orderan</span>
                 </a>
+                @endif
+                @if(Auth::user()->role == 'kasir')
                 <a href="{{ route('transaksi.index') }}" class="menu-item {{ request()->routeIs('transaksi.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-cash-register"></i>
                     <span>Transaksi</span>
                 </a>
+                @endif
+                @if(Auth::user()->role == 'waiter' || Auth::user()->role == 'kasir' || Auth::user()->role == 'owner')
                 <a href="{{ route('laporan.index') }}" class="menu-item {{ request()->routeIs('laporan.*') ? 'active' : '' }}">
                     <span>Laporan</span>
                 </a>
+                @endif
             </div>
+            @endif
         </nav>
 
         <div class="sidebar-footer">
