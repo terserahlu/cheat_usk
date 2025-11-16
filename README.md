@@ -37,7 +37,7 @@ Langkah-Langkah clone project bila lupa, tehee :
 
 Jawaban soal usk, stttss.. jangan kasih tau siapa siapa tehe:
 
-- 1. C. "<body background="gambar.jpg">"
+- 1. C. >body /background="gambar.jpg"<
 - 2. D. website yang memberi fasilitas pada pengunjung untuk menawar harga
 - 3. C. Javascript
 - 4. A. require("koneksi.php");
