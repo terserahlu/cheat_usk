@@ -1,0 +1,61 @@
+@extends('layouts.app')
+@section('title', 'Tambah Menu')
+@section('content')
+<div class="page-header">
+    <h2>Tambah Menu</h2>
+    <div class="breadcrumb">
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+        <span>/</span>
+        <a href="{{ route('menu.index') }}">Menu</a>
+        <span>/</span>
+        <span>Tambah</span>
+    </div>
+</div>
+
+@if($errors->any())
+    <div class="alert alert-danger" style="background: #FEE2E2; border: 1px solid #FCA5A5; color: #991B1B; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+        <ul style="margin: 0; padding-left: 20px;">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<div style="background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 30px; max-width: 600px;">
+    <form action="{{ route('menu.store') }}" method="POST">
+        @csrf
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">Nama Menu <span style="color: #e74c3c;">*</span></label>
+            <input type="text" name="namamenu" value="{{ old('namamenu') }}" 
+                   style="width: 100%; padding: 12px; border: 2px solid #D4DED0; border-radius: 8px; font-size: 1rem; transition: all 0.3s;"
+                   onfocus="this.style.borderColor='#A2AF9B'; this.style.boxShadow='0 0 0 3px rgba(162,175,155,0.1)';"
+                   onblur="this.style.borderColor='#D4DED0'; this.style.boxShadow='none';"
+                   placeholder="Contoh: Nasi Goreng" required>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">Harga <span style="color: #e74c3c;">*</span></label>
+            <input type="number" name="harga" value="{{ old('harga') }}" min="1000" step="1000"
+                   style="width: 100%; padding: 12px; border: 2px solid #D4DED0; border-radius: 8px; font-size: 1rem; transition: all 0.3s;"
+                   onfocus="this.style.borderColor='#A2AF9B'; this.style.boxShadow='0 0 0 3px rgba(162,175,155,0.1)';"
+                   onblur="this.style.borderColor='#D4DED0'; this.style.boxShadow='none';"
+                   placeholder="Contoh: 25000" required>
+            <small style="color: #7f8c8d; margin-top: 4px; display: block;">Minimal 3 digit (contoh: 25000)</small>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button type="submit" style="flex: 1; background: #A2AF9B; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+                    onmouseover="this.style.background='#8FA088'; this.style.transform='translateY(-2px)';"
+                    onmouseout="this.style.background='#A2AF9B'; this.style.transform='translateY(0)';">
+                <i class="fa-solid fa-save"></i> Simpan
+            </button>
+            <a href="{{ route('menu.index') }}" style="flex: 1; background: #E0E0E0; color: #2c3e50; padding: 12px 24px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fa-solid fa-times"></i> Batal
+            </a>
+        </div>
+    </form>
+</div>
+@endsection
+
