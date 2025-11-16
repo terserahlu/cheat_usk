@@ -119,6 +119,38 @@ Tidak bisa diakses dengan indeks langsung.
 | Memori        | Lebih hemat             | Lebih boros                       |
 | Cocok untuk   | Data stabil             | Data sering berubah               |
 
+##Use Case Diagram adalah diagram UML yang menggambarkan:
+
+Fungsi utamanya:
+
+Menunjukkan hubungan antara pengguna (actor) dengan sistem.
+
+Menjelaskan apa saja yang bisa dilakukan dalam sistem (fitur/layanan).
+
+Mempermudah komunikasi antara analis, programmer, dan user.
+
+Menentukan ruang lingkup sistem (apa yang termasuk dan apa yang tidak).
+
+Memberikan gambaran umum alur interaksi sistem secara sederhana.
+
+Contoh sederhana Use Case Diagram:
+
+Sistem: Aplikasi Kasir
+
+Actor:
+
+Kasir
+
+Use Case:
+
+Login
+
+Input barang
+
+Cetak struk
+
+Logout
+
 
 ## Learning Laravel
 
