@@ -33,20 +33,20 @@ Langkah-Langkah clone project bila lupa, tehee :
 - php artisan key:generate
 - php artisan migrate
 
-  ## Hint Answer Usk
+## Hint Answer Usk
 
-  Jawaban soal usk, stttss.. jangan kasih tau siapa siapa tehe:
+Jawaban soal usk, stttss.. jangan kasih tau siapa siapa tehe:
 
-  - 1. C. <body background="gambar.jpg">
-  - 2. D. website yang memberi fasilitas pada pengunjung untuk menawar harga
-  - 3. C. Javascript
-  - 4. A. require("koneksi.php");
-  - 5. D. $
-  - 6. A. / ... /
-  - 7. A. require("koneksi.php");
-  - 8. C. menutupi inputan (masked)
-  - 9. B. password
-  - 10. E. javac ujian.java
+- 1. C. <body background="gambar.jpg">
+- 2. D. website yang memberi fasilitas pada pengunjung untuk menawar harga
+- 3. C. Javascript
+- 4. A. require("koneksi.php");
+- 5. D. $
+- 6. A. / ... /
+- 7. A. require("koneksi.php");
+- 8. C. menutupi inputan (masked)
+- 9. B. password
+- 10. E. javac ujian.java
 
 ## Learning Laravel
 
