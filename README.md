@@ -25,8 +25,8 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 Langkah-Langkah clone project bila lupa, tehee :
 
-- git clone https://github.com/terserahlu/restaurant_app.git
-- cd restaurant_app
+- git clone hhttps://github.com/terserahlu/cheat_usk.git
+- cd cheat_usk
 - rm rm -rf .git
 - composer install
 - cp .env.example .env
